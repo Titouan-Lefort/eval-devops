@@ -8,6 +8,9 @@
         </div>
         <a class="btn btn-success btn-lg shadow-sm" href="{{ route('products.create') }}">
             <i class="fas fa-plus me-2"></i> Créer un Nouveau Produit
+        </a>
+    </div>
+
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible fade show shadow-sm" role="alert">
             <i class="fas fa-check-circle me-2"></i> {{ $message }}

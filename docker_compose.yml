@@ -1,0 +1,20 @@
+services:
+  mysql:
+    container_name: demo-mysql
+    image: mysql:8.0.40
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./init-mysql.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - demo-compose
+
+  laravel-app:
+    container_name: demo-laravel-app
+    image:
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+    networks:
+      - demo-compose
