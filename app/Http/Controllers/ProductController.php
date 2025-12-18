@@ -31,7 +31,12 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0|max:999999.99',
+        ], [
+            'price.max' => 'Le prix ne peut pas dépasser 999999.99.',
+            'price.numeric' => 'Le prix doit être un nombre.',
+            'price.required' => 'Le champ prix est obligatoire.',
+            'name.required' => 'Le champ nom est obligatoire.',
         ]);
 
         Product::create($request->all());
@@ -63,7 +68,12 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'price' => 'required|numeric',
+            'price' => 'required|numeric|min:0|max:999999.99',
+        ], [
+            'price.max' => 'Le prix ne peut pas dépasser 999999.99.',
+            'price.numeric' => 'Le prix doit être un nombre.',
+            'price.required' => 'Le champ prix est obligatoire.',
+            'name.required' => 'Le champ nom est obligatoire.',
         ]);
 
         $product->update($request->all());

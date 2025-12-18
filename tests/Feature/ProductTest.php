@@ -111,3 +111,12 @@ test('validates price is numeric on create', function () {
 
     $response->assertSessionHasErrors(['price']);
 });
+
+test('validates price max value', function () {
+    $response = $this->post(route('products.store'), [
+        'name' => 'Product',
+        'price' => 1000000, // Too high
+    ]);
+
+    $response->assertSessionHasErrors(['price']);
+});
