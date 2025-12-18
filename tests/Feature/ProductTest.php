@@ -102,3 +102,12 @@ test('validates product update', function () {
 
     $response->assertSessionHasErrors(['name', 'price']);
 });
+
+test('validates price is numeric on create', function () {
+    $response = $this->post(route('products.store'), [
+        'name' => 'Product',
+        'price' => 'not-a-number',
+    ]);
+
+    $response->assertSessionHasErrors(['price']);
+});
