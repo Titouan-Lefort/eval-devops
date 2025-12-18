@@ -14,10 +14,10 @@ jobs:
       with:
         php-version: '8.0'
     - uses: actions/checkout@v4
-    - name: copy files
-      run: Copy . .
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Install Dependencies
+      run: composer install
     - name: Generate key
       run: php artisan key:generate
     - name: Directory Permissions
