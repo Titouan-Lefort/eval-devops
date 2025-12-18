@@ -21,7 +21,7 @@ services:
 
   runner:
     container_name: laravel-runner
-    image: ${{secrets.DOCKERHUB_USERNAME}}/eval-devops:latest
+    image: ${{secrets.DOCKERHUB_USERNAME}}/github-runner:latest
     networks:
       - laravel
 
