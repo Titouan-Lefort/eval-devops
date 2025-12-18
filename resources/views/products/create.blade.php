@@ -36,6 +36,7 @@
                             <span class="input-group-text">$</span>
                             <input type="number" name="price" class="form-control form-control-lg" placeholder="0.00" step="0.01">
                         </div>
+                        <small class="text-muted">Le prix maximum est de 999999.99</small>
                     </div>
 
                     <div class="mb-4">
