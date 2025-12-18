@@ -30,7 +30,14 @@ jobs:
 
     - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
       run: php artisan test
-      
+
+    - name: cree artefact
+      uses: actions/upload-artifact@v4
+      with:
+        name: laravel-app
+        path: .
+
+
   docker:
     name: build & push docker image
     runs-on: ubuntu-latest
@@ -38,6 +45,11 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v5
+      - name: download laravel artefact
+        uses: actions/download-artifact@v4
+        with:
+          name: laravel-app
+          path: .
       - name: docker login
         uses: docker/login-action@v3
         with:
