@@ -49,7 +49,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: laravel-app
-          path: .
+          path: ./app
       - name: docker login
         uses: docker/login-action@v3
         with:
