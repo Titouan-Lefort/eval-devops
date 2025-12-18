@@ -1,0 +1,33 @@
+services:
+  mysql:
+    container_name: demo-mysql
+    image: mysql:8.0.40
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./init-mysql.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - laravel
+
+  laravel-app:
+    container_name: demo-laravel-app
+    image: ${{secrets.DOCKERHUB_USERNAME}}/eval-devops:latest
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+    networks:
+      - laravel
+
+  runner:
+    container_name: laravel-runner
+    image: ${{secrets.DOCKERHUB_USERNAME}}/github-runner:latest
+    networks:
+      - laravel
+
+
+
+networks:
+      laravel:
+        name: laravel-network
+        driver: bridge
