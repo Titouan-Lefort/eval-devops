@@ -11,7 +11,7 @@ services:
 
   laravel-app:
     container_name: demo-laravel-app
-    image: ${{secrets.DOCKERHUB_USERNAME}}/eval-devops:latest
+    image: titouanlfrt/eval-devops:latest
     ports:
       - "8000:8000"
     depends_on:
