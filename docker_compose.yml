@@ -7,14 +7,20 @@ services:
     volumes:
       - ./init-mysql.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
-      - demo-compose
+      - laravel
 
   laravel-app:
     container_name: demo-laravel-app
-    image:
+    image: ${{secrets.DOCKERHUB_USERNAME}}/eval-devops:latest
     ports:
       - "8000:8000"
     depends_on:
       - mysql
     networks:
-      - demo-compose
+      - laravel
+
+
+networks:
+      laravel:
+        name: laravel-network
+        driver: bridge
