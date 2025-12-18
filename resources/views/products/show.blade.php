@@ -18,7 +18,7 @@
                 </div>
 
                 <h2 class="text-center fw-bold mb-2">{{ $product->name }}</h2>
-                <p class="text-center text-muted mb-4">ID Produit si tu vois ca que le test a bien tiester: #{{ $product->id }}</p>
+                <p class="text-center text-muted mb-4">ID Produit si tu vois ca que le test a bien tiester : #{{ $product->id }}</p>
 
                 <hr>
 
