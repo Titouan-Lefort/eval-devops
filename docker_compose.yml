@@ -19,6 +19,13 @@ services:
     networks:
       - laravel
 
+  runner:
+    container_name: laravel-runner
+    image: ${{secrets.DOCKERHUB_USERNAME}}/eval-devops:latest
+    networks:
+      - laravel
+
+
 
 networks:
       laravel:
