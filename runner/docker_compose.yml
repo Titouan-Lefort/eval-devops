@@ -19,12 +19,6 @@ services:
     networks:
       - laravel
 
-  runner:
-    container_name: laravel-runner
-    image: ${{secrets.DOCKERHUB_USERNAME}}/github-runner:latest
-    networks:
-      - laravel
-
 
 
 networks:
