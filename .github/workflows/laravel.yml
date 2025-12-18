@@ -14,6 +14,8 @@ jobs:
       with:
         php-version: '8.0'
     - uses: actions/checkout@v4
+    - name: copy files
+      run: Copy . .
     - name: Copy .env
       run: php -r "file_exists('.env') || copy('.env.example', '.env');"
     - name: Generate key
