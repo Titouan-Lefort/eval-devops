@@ -49,3 +49,15 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/eval-devops:latest
+    
+  runner:
+    name: run docker containers
+    runs-on: self-hosted
+    needs: docker
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v5
+      - name: Set up Docker Compose
+        uses: docker/setup-buildx-action@v2
+      - name: Run Docker Compose
+        run: docker compose up -d --pull always --force-recreate --no-deps laravel-app
